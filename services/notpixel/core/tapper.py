@@ -715,7 +715,9 @@ class Tapper:
                 self.error(f"Unknown error: <light-yellow>{error}</light-yellow>")
 
 async def run_tapper(tg_client: Client, proxy: str | None):
+    tapper = Tapper(tg_client=tg_client)
     try:
-        await Tapper(tg_client=tg_client).run(proxy=proxy)
+        await tapper.run(proxy=proxy)
     except InvalidSession:
-        self.error(f"{tg_client.name} | Invalid Session")
+        tapper.error(f"{tg_client.name} | Invalid Session")
+
