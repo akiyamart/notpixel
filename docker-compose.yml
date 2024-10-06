@@ -1,11 +1,39 @@
-version: '3'
+version: '3.8'
+
 services:
-  bot:
-    container_name: 'ИМЯ РЕПЫ'
-    build:
-      context: .
-    stop_signal: SIGINT
-    restart: unless-stopped
-    command: "python3 main.py -a 1"
+  db:
+    image: postgres:14-alpine
+    container_name: db
+    hostname: db
+    restart: always
+    ports:
+      - 
+    environment:
+      - POSTGRES_PASSWORD=
+      - POSTGRES_USER=
+      - POSTGRES_DB=
+    networks:
+      - netbot
     volumes:
-      - .:/app
+      - postgres_data:/var/lib/postgresql/data 
+
+  bot: 
+    container_name: bot
+    hostname: bot
+    restart: always
+    ports:
+      - 
+    build:
+      context: "./bot"
+    networks:
+      - netbot
+    depends_on:
+      - db
+
+
+networks:
+  netbot:
+    driver: bridge
+
+volumes:
+  db: {} 
