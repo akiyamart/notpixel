@@ -1,7 +1,7 @@
 from pyrogram import Client
 
-from notpixel.config import settings
-from notpixel.utils import logger
+from config import settings
+from utils import logger
 
 async def register_sessions() -> None:
     API_ID = settings.API_ID

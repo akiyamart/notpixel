@@ -28,10 +28,10 @@ from .agents import generate_random_user_agent
 from .headers import headers, headers_notcoin
 from .helper import format_duration
 
-from notpixel.config import settings
-from notpixel.utils import logger
-from notpixel.utils.logger import SelfTGClient
-from notpixel.exceptions import InvalidSession
+from config import settings
+from utils import logger
+from utils.logger import SelfTGClient
+from exceptions import InvalidSession
 
 self_tg_client = SelfTGClient()
 
@@ -59,27 +59,27 @@ class Tapper:
         return generate_random_user_agent(device_type='android', browser_type='chrome')
 
     def info(self, message):
-        from notpixel.utils import info
+        from utils import info
         info(f"<light-yellow>{self.session_name}</light-yellow> | ℹ️ {message}")
 
     def debug(self, message):
-        from notpixel.utils import debug
+        from utils import debug
         debug(f"<light-yellow>{self.session_name}</light-yellow> | ⚙️ {message}")
 
     def warning(self, message):
-        from notpixel.utils import warning
+        from utils import warning
         warning(f"<light-yellow>{self.session_name}</light-yellow> | ⚠️ {message}")
 
     def error(self, message):
-        from notpixel.utils import error
+        from utils import error
         error(f"<light-yellow>{self.session_name}</light-yellow> | 😢 {message}")
 
     def critical(self, message):
-        from notpixel.utils import critical
+        from utils import critical
         critical(f"<light-yellow>{self.session_name}</light-yellow> | 😱 {message}")
 
     def success(self, message):
-        from notpixel.utils import success
+        from utils import success
         success(f"<light-yellow>{self.session_name}</light-yellow> | ✅ {message}")
 
     def save_user_agent(self):
@@ -720,4 +720,3 @@ async def run_tapper(tg_client: Client, proxy: str | None):
         await tapper.run(proxy=proxy)
     except InvalidSession:
         tapper.error(f"{tg_client.name} | Invalid Session")
-
