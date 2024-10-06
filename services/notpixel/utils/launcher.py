@@ -7,10 +7,10 @@ from itertools import cycle
 from pyrogram import Client
 from better_proxy import Proxy
 
-from notpixel.config import settings
-from notpixel.utils import logger
-from notpixel.core.tapper import run_tapper
-from notpixel.core.registrator import register_sessions
+from config import settings
+from utils import logger
+from core.tapper import run_tapper
+from core.registrator import register_sessions
 
 start_text = """
 
@@ -49,7 +49,7 @@ def get_session_names() -> list[str]:
 
 def get_proxies() -> list[Proxy]:
     if settings.USE_PROXY_FROM_FILE:
-        with open(file="bot/config/proxies.txt", encoding="utf-8-sig") as file:
+        with open(file="config/proxies.txt", encoding="utf-8-sig") as file:
             proxies = [Proxy.from_str(proxy=row.strip()).as_url for row in file]
     else:
         proxies = []
