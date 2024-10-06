@@ -7,10 +7,10 @@ from itertools import cycle
 from pyrogram import Client
 from better_proxy import Proxy
 
-from bot.config import settings
-from bot.utils import logger
-from bot.core.tapper import run_tapper
-from bot.core.registrator import register_sessions
+from notpixel.config import settings
+from notpixel.utils import logger
+from notpixel.core.tapper import run_tapper
+from notpixel.core.registrator import register_sessions
 
 start_text = """
 
