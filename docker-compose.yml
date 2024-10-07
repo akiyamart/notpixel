@@ -37,8 +37,7 @@ services:
     command: "python main.py"
   
   notpixel: 
-    container_name: notpixel
-    hostname: notpixel
+    container_name: "notpixel"
     build:
       context: "./services/notpixel"
     stop_signal: SIGINT
@@ -49,7 +48,6 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
-      .ETC: ${.ETC}
     ports:
       - 5679:5679
     networks:
