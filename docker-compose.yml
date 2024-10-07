@@ -37,9 +37,10 @@ services:
     command: "python main.py"
   
   notpixel: 
-    container_name: 'ИМЯ'
+    container_name: notpixel
+    hostname: notpixel
     build:
-      context: ./services/notpixel
+      context: "./services/notpixel"
     stop_signal: SIGINT
     restart: unless-stopped
     environment:
