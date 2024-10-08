@@ -28,7 +28,7 @@ My other bots:
 💩Boinkers - https://github.com/YarmolenkoD/boinkers
 🚀Moonbix - https://github.com/YarmolenkoD/moonbix
 
-Select an action:
+Select an acon:
 
     1. Start drawing 🎨️
     2. Create a session 👨‍🎨

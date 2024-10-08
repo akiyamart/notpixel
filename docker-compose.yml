@@ -26,6 +26,10 @@ services:
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
       BOT_TOKEN: ${BOT_TOKEN}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      PROXY_USERNAME: ${PROXY_USERNAME}
+      PROXY_PASS: ${PROXY_PASS}
+      PROXY_ENDPOINT: ${PROXY_ENDPOINT}
     ports:
       - 5678:5678
     build:
