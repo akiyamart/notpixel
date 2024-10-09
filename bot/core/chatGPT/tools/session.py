@@ -1,7 +1,7 @@
 import aiohttp
 from typing import List, Dict, Any
 
-from ...settings import ConfigBot
+from .config import ConfigGpt
 
 class OpenAISession:
     def __init__(self, api_key: str, proxy_username: str, proxy_pass: str, proxy_endpoint: str):
@@ -24,7 +24,7 @@ class OpenAISession:
         pre_prompt = {"role": "system", "content": system_prompt}
         return [pre_prompt] + messages
 
-    async def chat_gpt_session_text(self, messages: List[Dict[str, Any]], system_prompt: str = "Ты ассистент, который помогает с задачами и расписанием.") -> Dict[str, Any]:
+    async def chat_gpt_session_text(self, messages: List[Dict[str, Any]], system_prompt: str = "Ты ассистент, который помогает юзеру.") -> Dict[str, Any]:
         url = "https://api.openai.com/v1/chat/completions"
         full_messages = self._add_pre_prompt(messages, system_prompt)
         json_data = {
@@ -42,8 +42,8 @@ class OpenAISession:
         return await self._post_request(url, json_data)
 
 chat_gpt_session = OpenAISession(
-    api_key=ConfigBot.OPENAI_API_KEY,
-    proxy_username=ConfigBot.PROXY_USERNAME,
-    proxy_pass=ConfigBot.PROXY_PASS,
-    proxy_endpoint=ConfigBot.PROXY_ENDPOINT
+    api_key=ConfigGpt.OPENAI_API_KEY,
+    proxy_username=ConfigGpt.PROXY_USERNAME,
+    proxy_pass=ConfigGpt.PROXY_PASS,
+    proxy_endpoint=ConfigGpt.PROXY_ENDPOINT
 )

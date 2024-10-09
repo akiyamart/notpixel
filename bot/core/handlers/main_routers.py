@@ -12,14 +12,16 @@ router = Router()
 # @db_session_decorator
 
 @router.message(Command("start"))
-async def start_handler(message: Message,):
+async def start_handler(message: Message):
     await message.answer(
             text=f"Привет, {message.from_user.username}, выбери, что ты хочешь сделать 🤔",
             reply_markup=menu()
         )
 
-@router.message(F.data == "menu")
-async def start_handler(callback_query: CallbackQuery, db: AsyncSession):
+@router.callback_query(F.data == "menu")
+async def start_handler(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.answer()
+    await state.clear()
     await callback_query.message.answer(
             text=f"Выбери действие нижe 👇",
             reply_markup=menu()

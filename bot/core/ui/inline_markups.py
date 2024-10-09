@@ -5,8 +5,8 @@ def menu():
     builder = InlineKeyboardBuilder()
 
     buttons = [
-        {"text": "👩‍💻 Чат с ИИ", "callback_data": "chat_ai"},
-        {"text": "👛 Боты", "callback_data": "bot_ferm"},
+        {"text": "👨🏻‍💻 Чат с ИИ", "callback_data": "chat_ai"},
+        {"text": "🤖 Боты", "callback_data": "bot_ferm"},
     ]
 
     for button in buttons: 
