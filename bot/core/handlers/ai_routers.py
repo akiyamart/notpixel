@@ -6,7 +6,7 @@ from datetime import datetime
 
 from ..states import AIConnect
 from ..chatGPT import chat_gpt_session
-from ..ui import back_to_menu
+from ..ui import back_to_menu, clear_data
 
 router = Router()
 
@@ -19,6 +19,14 @@ async def start_handler(callback_query: CallbackQuery, state: FSMContext):
         reply_markup=back_to_menu()
     )
 
+@router.callback_query(F.data == "clear_data")
+async def start_handler(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.answer()
+    await state.set_data({})
+    await callback_query.message.answer(
+        text="Память была очищена 🗑"
+    )
+    
 @router.message(AIConnect.gpt_state)
 async def AI_assistant_text_handler(message: Message, state: FSMContext):
     data = await state.get_data()
@@ -45,4 +53,7 @@ async def AI_assistant_text_handler(message: Message, state: FSMContext):
     response = await chat_gpt_session.chat_gpt_session_text(messages=history)
     raw_content = response['choices'][0]['message']['content']
 
-    await message.answer(raw_content)
+    await message.answer(
+        text=f"{raw_content}", 
+        reply_markup=clear_data()
+    )

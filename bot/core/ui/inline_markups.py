@@ -28,3 +28,12 @@ def back_to_menu():
         ]
     )
 
+def clear_data(): 
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="♻️ Очистить память", callback_data="clear_data")
+            ]
+        ]
+    )
+

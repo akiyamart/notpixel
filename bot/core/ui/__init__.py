@@ -1,1 +1,1 @@
-from .inline_markups import menu, back_to_menu
+from .inline_markups import menu, back_to_menu, clear_data
